@@ -5,6 +5,7 @@ bundler_args: --jobs=2
 script:
 script:
   - bundle exec rake db:setup
+  - bundle exec rake db:migrate
   - bundle exec rake spec
   - bundle exec rubocop
 cache: bundler
