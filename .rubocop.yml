@@ -1,10 +1,9 @@
 Metrics/LineLength:
   Max: 130
 
+Metrics/BlockLength:
+  Max: 110
+
 Style/Documentation:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
+    - '**/*'
