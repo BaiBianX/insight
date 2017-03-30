@@ -6,7 +6,6 @@ script:
   - bundle exec rake db:migrate
   - bundle exec rake db:setup
   - bundle exec rake spec
-  - cat /home/travis/build/BaiBianX/insight/vendor/bundle/ruby/2.4.0/gems/rake-12.0.0/.rubocop.yml
   - bundle exec rubocop . --config .rubocop.yml
 cache: bundler
 services:
