@@ -2,8 +2,9 @@
 
 class ApplicationController < ActionController::API
   include RedisStore
+  before_action :authenticate_user!
 
-  def authenticate!
+  def authenticate_user!
     if authenticate_with_http_token { |token, _options| RedisStore.hexists(token, 'user_id') && @token = token }
       user_id = RedisStore.hmget(@token, 'user_id')
       @current_user = User.find user_id

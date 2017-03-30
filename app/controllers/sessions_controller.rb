@@ -3,6 +3,8 @@
 class SessionsController < ApplicationController
   include RedisStore
 
+  skip_before_action :authenticate_user!, only: [:create]
+
   def create
     @user = User.find_by(mobile: session_params[:mobile])
     if @user && @user.authenticate(session_params[:password])
