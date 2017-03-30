@@ -20,3 +20,7 @@ Style/GlobalVars:
   Exclude:
     - 'config/initializers/redis.rb'
     - 'lib/redis_store.rb'
+
+Style/MixinGrouping:
+  Exclude:
+    - 'spec/spec_helper.rb'

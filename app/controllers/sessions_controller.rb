@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       @token = gen_random_token
       save_token_to_redis(@token, @user.id)
     else
-      render json: { error: 'Invalid mobile/password combination.' }, status: :unauthorized
+      render json: { error: 'Invalid mobile/password combination' }, status: :unauthorized
     end
   end
 

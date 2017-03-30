@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'factory_girl'
+require 'shoulda/matchers'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -13,4 +14,7 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
   config.include FactoryGirl::Syntax::Methods
+  config.include Shoulda::Matchers::ActionController, type: :controller
+  config.include Shoulda::Matchers::ActiveModel, type: :model
+  config.include Shoulda::Matchers::ActiveRecord, type: :model
 end
