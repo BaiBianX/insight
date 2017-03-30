@@ -7,26 +7,18 @@ class UsersController < ApplicationController
     render json: @users
   end
 
-  def show
-    render json: @user
-  end
+  def show; end
 
   def create
     @user = User.new(user_params)
+    return if @user.save
 
-    if @user.save
-      render json: @user, status: :created, location: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
+    render json: @user.errors, status: :unprocessable_entity
   end
 
   def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
+    return if @user.update(user_params)
+    render json: @user.errors, status: :unprocessable_entity
   end
 
   private

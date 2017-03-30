@@ -1,3 +1,7 @@
+AllCops:
+  Excludes:
+    - 'db/schema.rb'
+
 Metrics/LineLength:
   Max: 130
 
@@ -7,3 +11,8 @@ Metrics/BlockLength:
 Style/Documentation:
   Exclude:
     - '**/*'
+
+Style/GlobalVars:
+  Exclude:
+    - 'config/initializers/redis.rb'
+    - 'lib/redis_store.rb'

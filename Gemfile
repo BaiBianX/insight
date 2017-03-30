@@ -29,14 +29,14 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.5'
   gem 'pry'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :test do
+  gem 'factory_girl'
   gem 'rubocop', '~> 0.47.1', require: false
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'factory_girl'
 end
 
 group :development do
@@ -45,4 +45,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-

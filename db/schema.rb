@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_329_152_226) do
+ActiveRecord::Schema.define(version: 20_170_330_011_424) do
   create_table 'users', force: :cascade do |t|
     t.string   'mobile'
     t.string   'password_digest'
-    t.string   'nickname'
-    t.datetime 'created_at',      null: false
-    t.datetime 'updated_at',      null: false
+    t.string   'nickname', default: '普通用户'
+    t.datetime 'created_at',                       null: false
+    t.datetime 'updated_at',                       null: false
     t.index ['mobile'], name: 'index_users_on_mobile', unique: true
   end
 end
