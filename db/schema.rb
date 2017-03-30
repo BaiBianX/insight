@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330011424) do
+ActiveRecord::Schema.define(version: 20170330114556) do
 
   create_table "users", force: :cascade do |t|
     t.string   "mobile"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170330011424) do
     t.string   "nickname",        default: "普通用户"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "auth_token"
     t.index ["mobile"], name: "index_users_on_mobile", unique: true
   end
 

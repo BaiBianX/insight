@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  include RedisStore
   include CanCan::ControllerAdditions
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
@@ -12,11 +11,9 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_user!
-    if authenticate_with_http_token { |token, _options| RedisStore.hexists(token, 'user_id') && @token = token }
-      user_id = RedisStore.hmget(@token, 'user_id').first
-      @current_user = User.find(user_id)
-    else
-      render json: { error: 'Invalid token' }, status: :unauthorized
+    authenticate_with_http_token do |token|
+      @current_user = User.find_by(auth_token: token)
+      render json: { error: 'Invalid token' }, status: :unauthorized unless @current_user
     end
   end
 end

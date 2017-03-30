@@ -3,8 +3,9 @@
 Rails.application.routes.draw do
   scope :api, defaults: { format: :json } do
     resources :users, except: [:destroy]
-    resources :sessions, only: [:create]
+    resources :sessions, only: %i(create destroy)
     post 'signup', to: 'users#create'
     post 'signin', to: 'sessions#create'
+    post 'signout', to: 'sessions#destroy'
   end
 end
