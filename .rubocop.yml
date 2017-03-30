@@ -1,11 +1,3 @@
-AllCops:
-  Exclude:
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'script/**/*'
-    - 'Gemfile'
-  TargetRubyVersion: 2.4
-
 Metrics/LineLength:
   Max: 130
 
