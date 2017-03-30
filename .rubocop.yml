@@ -1,6 +1,8 @@
 AllCops:
   Exclude:
-    - 'db/schema.rb'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
 
 Metrics/LineLength:
   Max: 130
