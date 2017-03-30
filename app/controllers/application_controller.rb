@@ -2,6 +2,8 @@
 
 class ApplicationController < ActionController::API
   include RedisStore
+  include Cancancan::ControllerAdditions
+
   before_action :authenticate_user!
 
   def authenticate_user!
