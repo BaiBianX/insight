@@ -51,5 +51,4 @@ group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
-  gem 'listen', '~> 3.0.5'
 end
