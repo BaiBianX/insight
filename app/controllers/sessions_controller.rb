@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  include RedisStore
-
   before_action :authenticate_user!, only: [:destroy]
   before_action :set_user, only: [:destroy]
 
@@ -26,7 +24,7 @@ class SessionsController < ApplicationController
   def gen_random_token
     token = Digest::SHA1.hexdigest([Time.now, rand].join)
     loop do
-      return token unless RedisStore.hexists(token, 'user_id')
+      return token unless User.find_by(auth_token: token)
       token = Digest::SHA1.hexdigest([Time.now, rand].join)
     end
     token
