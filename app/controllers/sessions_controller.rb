@@ -18,10 +18,10 @@ class SessionsController < ApplicationController
   private
 
   def gen_random_token
-    token = SecureRandom.urlsafe_base64
+    token = Digest::SHA1.hexdigest([Time.now, rand].join)
     loop do
       return token unless RedisStore.hexists(token, 'user_id')
-      token = SecureRandom.urlsafe_base64
+      token = Digest::SHA1.hexdigest([Time.now, rand].join)
     end
     token
   end
