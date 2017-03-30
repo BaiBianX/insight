@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   validates :mobile, presence: true
   validates :mobile, uniqueness: true

@@ -12,7 +12,6 @@ Metrics/LineLength:
 Metrics/BlockLength:
   Max: 110
 
-
 Style/Documentation:
   Enabled: false
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RedisStore
   class << self
     def hget(hash, field)
