@@ -35,7 +35,7 @@ end
 
 group :test do
   gem 'factory_girl'
-  gem 'rubocop', '~> 0.47.1', require: false
+  gem 'rubocop', '~> 0.48.0', require: false
   gem 'shoulda-matchers', '~> 3.1'
 end
 
