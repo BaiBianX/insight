@@ -1,16 +1,18 @@
-# config valid only for current version of Capistrano
-lock "3.8.0"
+# frozen_string_literal: true
 
-set :application, "insight"
+# config valid only for current version of Capistrano
+lock '3.8.0'
+
+set :application, 'insight'
 set :scm, :git
-set :repo_url, "git@github.com:BaiBianX/insight.git"
+set :repo_url, 'git@github.com:BaiBianX/insight.git'
 set :rvm_ruby_version, '2.4.0'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/var/www/insight"
+set :deploy_to, '/var/www/insight'
 
 # Default value for :format is :airbrussh.
 set :format, :airbrussh
@@ -23,10 +25,10 @@ set :format, :airbrussh
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml"
+append :linked_files, 'config/database.yml'
 
 # Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
 
 set :tests, []
 
