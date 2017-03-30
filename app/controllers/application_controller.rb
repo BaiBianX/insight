@@ -11,9 +11,18 @@ class ApplicationController < ActionController::API
   end
 
   def authenticate_user!
-    authenticate_with_http_token do |token|
+    authenticate || render_unauthorized
+  end
+
+  protected
+
+  def authenticate
+    authenticate_with_http_token do |token, _options|
       @current_user = User.find_by(auth_token: token)
-      render json: { error: 'Invalid token' }, status: :unauthorized unless @current_user
     end
+  end
+
+  def render_unauthorized
+    render json: { error: 'Invalid token' }, status: :unauthorized
   end
 end

@@ -15,4 +15,24 @@ RSpec.describe SessionsController, type: :controller do
       expect(response).to render_template :create
     end
   end
+
+  describe 'DELETE #destroy' do
+    let(:user) { create :user }
+
+    context 'with authentication' do
+      before(:each) { request.headers['authorization'] = "Token token=#{user.set_auth_token}" }
+      it 'removes user auth token from database' do
+        delete :destroy, params: { id: user.id }
+        expect(assigns(:user)).to eq(user)
+        expect(response).to render_template :destroy
+      end
+    end
+
+    context 'without authentication' do
+      it 'returns 401' do
+        delete :destroy, params: { id: user.id }
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
 end
