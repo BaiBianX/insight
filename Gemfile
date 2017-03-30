@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -29,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'pry'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
 end
 
@@ -37,8 +39,8 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.8.0'
   gem 'faker', '~> 1.7.3'
-  gem 'rubocop', '~> 0.48.0', require: false
   gem 'rails-controller-testing'
+  gem 'rubocop', '~> 0.48.0', require: false
   gem 'shoulda-matchers', '~> 3.1'
 end
 

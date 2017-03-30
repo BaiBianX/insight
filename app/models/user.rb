@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :mobile, length: { is: 11 }
   validates :nickname, length: { minimum: 2, maximum: 10 }
-  validates :password, length: { minimum: 6, maximum: 16 }
+  validates :password, length: { minimum: 6, maximum: 16 }, allow_nil: true
 
   validates :mobile, uniqueness: true
   validates :mobile, format: { with: /\d{11}/ }

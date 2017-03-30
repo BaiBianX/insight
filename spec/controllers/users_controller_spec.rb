@@ -3,12 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  before(:each) { request.accept = 'application/json' }
+
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    { mobile: '13000000000', password: 'password', password_confirmation: 'password', nickname: 'Draven' }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { mobile: '130', password: 'password', password_confirmation: 'password', nickname: 'Draven' }
   end
 
   let(:valid_session) { {} }
@@ -42,11 +44,6 @@ RSpec.describe UsersController, type: :controller do
         expect(assigns(:user)).to be_a(User)
         expect(assigns(:user)).to be_persisted
       end
-
-      it 'redirects to the created user' do
-        post :create, params: { user: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(User.last)
-      end
     end
 
     context 'with invalid params' do
@@ -54,37 +51,26 @@ RSpec.describe UsersController, type: :controller do
         post :create, params: { user: invalid_attributes }, session: valid_session
         expect(assigns(:user)).to be_a_new(User)
       end
-
-      it "re-renders the 'new' template" do
-        post :create, params: { user: invalid_attributes }, session: valid_session
-        expect(response).to render_template('new')
-      end
     end
   end
 
   describe 'PUT #update' do
     context 'with valid params' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        { mobile: '18000000000' }
       end
 
       it 'updates the requested user' do
         user = User.create! valid_attributes
         put :update, params: { id: user.to_param, user: new_attributes }, session: valid_session
         user.reload
-        skip('Add assertions for updated state')
+        expect(user.mobile).to eq(new_attributes[:mobile])
       end
 
       it 'assigns the requested user as @user' do
         user = User.create! valid_attributes
         put :update, params: { id: user.to_param, user: valid_attributes }, session: valid_session
         expect(assigns(:user)).to eq(user)
-      end
-
-      it 'redirects to the user' do
-        user = User.create! valid_attributes
-        put :update, params: { id: user.to_param, user: valid_attributes }, session: valid_session
-        expect(response).to redirect_to(user)
       end
     end
 
@@ -93,12 +79,6 @@ RSpec.describe UsersController, type: :controller do
         user = User.create! valid_attributes
         put :update, params: { id: user.to_param, user: invalid_attributes }, session: valid_session
         expect(assigns(:user)).to eq(user)
-      end
-
-      it "re-renders the 'edit' template" do
-        user = User.create! valid_attributes
-        put :update, params: { id: user.to_param, user: invalid_attributes }, session: valid_session
-        expect(response).to render_template('edit')
       end
     end
   end
