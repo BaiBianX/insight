@@ -3,6 +3,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
+    - 'vendor/**/*'
     - 'Gemfile'
   TargetRubyVersion: 2.4
 
