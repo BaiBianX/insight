@@ -2,6 +2,7 @@
 
 require 'factory_girl'
 require 'shoulda/matchers'
+require 'database_cleaner'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -18,4 +19,15 @@ RSpec.configure do |config|
   config.include Shoulda::Matchers::ActionController, type: :controller
   config.include Shoulda::Matchers::ActiveModel, type: :model
   config.include Shoulda::Matchers::ActiveRecord, type: :model
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end
