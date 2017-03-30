@@ -13,6 +13,7 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
   config.include FactoryGirl::Syntax::Methods
   config.include Shoulda::Matchers::ActionController, type: :controller
   config.include Shoulda::Matchers::ActiveModel, type: :model

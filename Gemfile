@@ -34,7 +34,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory_girl'
+  gem 'factory_girl_rails', '~> 4.8.0'
   gem 'faker', '~> 1.7.3'
   gem 'rubocop', '~> 0.48.0', require: false
   gem 'shoulda-matchers', '~> 3.1'
