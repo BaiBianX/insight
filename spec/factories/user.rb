@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :user do
-    mobile '13000000000'
+    mobile { Faker::Number.number(13) }
     password 'password'
     password_confirmation 'password'
     nickname 'User'
