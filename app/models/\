@@ -4,9 +4,18 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # can :manage, :all if user.admin?
+    if user.admin?
+      can :manage, :all
+    end
+
     can :update, User do |resource|
       resource.id == user.id
     end
+  end
+
+  protected
+
+  def basic_read_only
+    can :read, User
   end
 end

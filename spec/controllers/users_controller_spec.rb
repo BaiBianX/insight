@@ -6,11 +6,11 @@ RSpec.describe UsersController, type: :controller do
   before(:each) { request.accept = 'application/json' }
 
   let(:valid_attributes) do
-    { mobile: '13000000000', password: 'password', password_confirmation: 'password', nickname: 'Draven' }
+    { mobile: '13000000000', password: 'password', nickname: 'Draven' }
   end
 
   let(:invalid_attributes) do
-    { mobile: '130', password: 'password', password_confirmation: 'password', nickname: 'Draven' }
+    { mobile: '130', password: 'password', nickname: 'Draven' }
   end
 
   let(:valid_session) { {} }

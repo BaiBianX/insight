@@ -2,12 +2,10 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: %i(show update destroy)
-
-  skip_before_action :authenticate_user!, only: %i(create index show)
+  before_action :authenticate_user!, only: :update
 
   def index
     @users = User.all
-
     render json: @users
   end
 
@@ -16,11 +14,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     return if @user.save
-
     render json: @user.errors, status: :unprocessable_entity
   end
 
   def update
+    authorize! :update, @user
     return if @user.update(user_params)
     render json: @user.errors, status: :unprocessable_entity
   end
@@ -32,6 +30,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:mobile, :password, :password_confirmation, :nickname)
+    params.require(:user).permit(:mobile, :password, :nickname)
   end
 end
