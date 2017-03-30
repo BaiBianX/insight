@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :nickname, length: { minimum: 2, maximum: 10 }
 
   has_secure_password
+
+  def self.with_token(token); end
 end
