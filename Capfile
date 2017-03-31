@@ -3,9 +3,9 @@
 require 'capistrano/setup'
 require 'capistrano/deploy'
 require 'capistrano/scm/git'
+require 'capistrano/bundler'
 require 'capistrano/puma'
 require 'capistrano/rvm'
-require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
 
 install_plugin Capistrano::Puma # Default puma tasks
