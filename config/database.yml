@@ -9,20 +9,23 @@
 #   pool: 5
 #   timeout: 5000
 
-defaule: &default
+default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: insight_development
+  username: insight
+  password:
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: insight_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
-
+  database: insight_production
+  username: insight
+  password: <%= ENV['INSIGHT_DATABASE_PASSWORD'] %>
