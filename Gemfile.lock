@@ -60,6 +60,10 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano3-puma (3.1.0)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (~> 3.4)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     database_cleaner (1.5.3)
@@ -207,6 +211,7 @@ DEPENDENCIES
   cancancan (~> 1.16.0)
   capistrano-rails
   capistrano-rvm
+  capistrano3-puma
   database_cleaner
   factory_girl_rails (~> 4.8.0)
   faker (~> 1.7.3)
