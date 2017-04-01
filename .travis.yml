@@ -3,8 +3,8 @@ rvm:
   - 2.4.0
 bundler_args: --jobs=2
 script:
-  - bundle exec rake db:migrate
   - bundle exec rake db:setup
+  - bundle exec rake db:migrate
   - bundle exec rake spec
   - bundle exec rubocop . --config .rubocop.yml
 cache: bundler
