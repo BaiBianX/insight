@@ -7,11 +7,15 @@ class ApplicationController < ActionController::API
   attr_accessor :current_user
 
   rescue_from CanCan::AccessDenied do
-    render json: { error: 'You are not authorized to access this resource.' }, statuc: 403
+    render_error 'You are not authorized to access this resource.', :unauthorized
   end
 
   def authenticate_user!
     authenticate || render_unauthorized
+  end
+
+  def render_error(error, status = 200)
+    render json: { error: error }, status: status
   end
 
   protected
@@ -23,6 +27,6 @@ class ApplicationController < ActionController::API
   end
 
   def render_unauthorized
-    render json: { error: 'Invalid token' }, status: :unauthorized
+    render_error 'Invalid token', :unauthorized
   end
 end

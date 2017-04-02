@@ -14,13 +14,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     return if @user.save
-    render json: @user.errors, status: :unprocessable_entity
+    render_error @user.errors.full_messages
   end
 
   def update
     authorize! :update, @user
     return if @user.update(user_params)
-    render json: @user.errors, status: :unprocessable_entity
+    render_error @user.errors.full_messages
   end
 
   private
