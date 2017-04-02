@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(session_params[:password])
       @user.set_auth_token
     else
-      render_error 'Invalid mobile/password combination' :unauthorized
+      render_error 'Invalid mobile/password combination', :unauthorized
     end
   end
 
