@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  enum gender: [:male, :female]
+  enum gender: %i(male female)
 
   validates :mobile, presence: true
   validates :password_digest, presence: true
