@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  enum gender: [:male, :female]
+
   validates :mobile, presence: true
   validates :password_digest, presence: true
   validates :nickname, presence: true
 
   validates :mobile, length: { is: 11 }
   validates :nickname, length: { minimum: 2, maximum: 10 }
+  validates :description, length: { maximum: 100 }
   validates :password, length: { minimum: 6, maximum: 16 }, allow_nil: true
 
   validates :mobile, uniqueness: true
