@@ -15,6 +15,8 @@ class User < ApplicationRecord
   validates :mobile, uniqueness: true
   validates :mobile, format: { with: /\d{11}/ }
 
+  before_create :set_birthday
+
   has_secure_password
 
   def set_auth_token
@@ -25,5 +27,9 @@ class User < ApplicationRecord
       update_attributes(auth_token: token)
     end
     auth_token
+  end
+
+  def set_birthday
+    self.birthday = Time.now.to_date unless birthday
   end
 end

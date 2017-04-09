@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403065727) do
+ActiveRecord::Schema.define(version: 20170409161200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170403065727) do
     t.string   "locations",       default: [],                  array: true
     t.string   "experience",      default: [],                  array: true
     t.integer  "gender",          default: 0
+    t.datetime "birthday"
     t.index ["mobile"], name: "index_users_on_mobile", unique: true, using: :btree
   end
 

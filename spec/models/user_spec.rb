@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of(:mobile) }
   it { is_expected.to validate_presence_of(:nickname) }
   it { is_expected.to validate_presence_of(:password_digest) }
+  it { is_expected.to validate_presence_of(:birthday) }
   it { is_expected.to validate_uniqueness_of(:mobile) }
   it { is_expected.to validate_length_of(:nickname).is_at_least(2).is_at_most(10) }
   it { is_expected.to validate_length_of(:password).is_at_least(6).is_at_most(16) }

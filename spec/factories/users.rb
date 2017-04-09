@@ -6,6 +6,7 @@ FactoryGirl.define do
     nickname { Faker::Internet.user_name(2..10) }
     password 'password'
     gender :male
+    birthday Time.now.to_date
     description { Faker::Lorem.sentences(1) }
     educations { Array.new(Faker::Number.between(1, 10)) { Faker::Address.city } }
     locations { Array.new(Faker::Number.between(1, 10)) { Faker::Educator.university } }
