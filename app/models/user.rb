@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :mobile, presence: true
   validates :password_digest, presence: true
   validates :nickname, presence: true
+  validates :birthday, presence: true
+  validates :gender, presence: true
 
   validates :mobile, length: { is: 11 }
   validates :nickname, length: { minimum: 2, maximum: 10 }
@@ -15,7 +17,7 @@ class User < ApplicationRecord
   validates :mobile, uniqueness: true
   validates :mobile, format: { with: /\d{11}/ }
 
-  before_create :set_birthday
+  after_initialize :set_default_value
 
   has_secure_password
 
@@ -29,7 +31,8 @@ class User < ApplicationRecord
     auth_token
   end
 
-  def set_birthday
+  def set_default_value
     self.birthday = Time.now.to_date unless birthday
+    self.gender = 'female' unless gender
   end
 end

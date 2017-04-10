@@ -51,7 +51,7 @@ RSpec.describe UsersController, type: :controller do
     let(:user) { create :user }
 
     context 'with valid params' do
-      let(:new_attributes) { { mobile: '18000000000' } }
+      let(:new_attributes) { { mobile: '18000000000', birthday: '1491834937' } }
 
       context 'without authentication' do
         it 'returns 401' do
@@ -69,6 +69,7 @@ RSpec.describe UsersController, type: :controller do
           put :update, params: { id: user.to_param, user: new_attributes }
           user.reload
           expect(user.mobile).to eq(new_attributes[:mobile])
+          expect(user.birthday).to eq(Time.at(new_attributes[:birthday].to_i))
         end
 
         it 'assigns the requested user as @user' do

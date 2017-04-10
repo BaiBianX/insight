@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
+    params[:user][:birthday] = Time.at(params[:user][:birthday].to_i) if params[:user][:birthday]
     params.require(:user).permit(:mobile, :password, :nickname, :birthday, :locations, :experience, :educations, :gender)
   end
 end
