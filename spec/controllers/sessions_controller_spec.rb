@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-  before(:each) { request.accept = 'application/json' }
-
   describe 'POST #create' do
     let(:user) { create :user }
     let(:session_params) { { mobile: user.mobile, password: user.password } }

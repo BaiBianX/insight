@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  before(:each) { request.accept = 'application/json' }
-
   describe 'GET #index' do
     let!(:user) { create :user }
     it 'assigns all users as @users' do
