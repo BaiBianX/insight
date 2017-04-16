@@ -42,6 +42,7 @@ group :test do
   gem 'faker', '~> 1.7.3'
   gem 'rails-controller-testing'
   gem 'rubocop', '~> 0.48.0', require: false
+  gem 'guard-rspec', require: false
   gem 'shoulda-matchers', '~> 3.1'
 end
 
