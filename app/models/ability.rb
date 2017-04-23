@@ -5,7 +5,7 @@ class Ability
 
   def initialize(user)
     # can :manage, :all if user.admin?
-    can %i(update destroy), User do |resource|
+    can %i[update destroy], User do |resource|
       resource.id == user.id
     end
   end

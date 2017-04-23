@@ -32,6 +32,7 @@ gem 'cancancan', '~> 1.16.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
 end
@@ -40,9 +41,9 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.8.0'
   gem 'faker', '~> 1.7.3'
+  gem 'guard-rspec', require: false
   gem 'rails-controller-testing'
   gem 'rubocop', '~> 0.48.0', require: false
-  gem 'guard-rspec', require: false
   gem 'shoulda-matchers', '~> 3.1'
 end
 
