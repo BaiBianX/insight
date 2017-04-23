@@ -35,6 +35,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rubocop', '~> 0.48.0', require: false
 end
 
 group :test do
@@ -43,7 +44,6 @@ group :test do
   gem 'faker', '~> 1.7.3'
   gem 'guard-rspec', require: false
   gem 'rails-controller-testing'
-  gem 'rubocop', '~> 0.48.0', require: false
   gem 'shoulda-matchers', '~> 3.1'
 end
 
